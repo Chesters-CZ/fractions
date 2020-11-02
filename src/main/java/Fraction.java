@@ -10,36 +10,6 @@ public class Fraction implements IFraction {
         if (denominator == 0) throw new ArithmeticException("Cannot Divide by 0");
     }
 
-    @Override
-    public Integer getNumerator() {
-        return numerator;
-    }
-
-    @Override
-    public Integer getDenominator() {
-        return denominator;
-    }
-
-    @Override
-    public IFraction plus(IFraction other) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public IFraction minus(IFraction other) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public IFraction times(IFraction other) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public IFraction dividedBy(IFraction other) {
-        throw new UnsupportedOperationException();
-    }
-
     public static Fraction createNormalised(Integer numerator, Integer denominator) {
         throw new UnsupportedOperationException();
     }
@@ -59,6 +29,52 @@ public class Fraction implements IFraction {
             int gcd = findGreatestCommonDenominator(i1, i2);
             return Math.abs(i1 * i2) / gcd;
         }
+    }
+
+    @Override
+    public Integer getNumerator() {
+        return numerator;
+    }
+
+    @Override
+    public Integer getDenominator() {
+        return denominator;
+    }
+
+    @Override
+    public IFraction plus(IFraction other) {
+        int b = getDenominator();
+        int a = getNumerator();
+        int c = other.getNumerator();
+        int d = other.getDenominator();
+        return new Fraction((a * d) + (b * c), b * d);
+    }
+
+    @Override
+    public IFraction minus(IFraction other) {
+        int b = getDenominator();
+        int a = getNumerator();
+        int c = other.getNumerator();
+        int d = other.getDenominator();
+        return new Fraction((a * d) - (b * c), b * d);
+    }
+
+    @Override
+    public IFraction times(IFraction other) {
+        int b = getDenominator();
+        int a = getNumerator();
+        int c = other.getNumerator();
+        int d = other.getDenominator();
+        return new Fraction(a * c, b * d);
+    }
+
+    @Override
+    public IFraction dividedBy(IFraction other) {
+        int b = getDenominator();
+        int a = getNumerator();
+        int c = other.getNumerator();
+        int d = other.getDenominator();
+        return new Fraction(a * d, b * c);
     }
 
     @Override
