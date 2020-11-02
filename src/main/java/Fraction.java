@@ -11,7 +11,17 @@ public class Fraction implements IFraction {
     }
 
     public static Fraction createNormalised(Integer numerator, Integer denominator) {
-        throw new UnsupportedOperationException();
+        try {
+            for (int i = denominator / 2; i > 0; i--) {
+                if (denominator % i == 0 && numerator % i == 0) {
+                    return new Fraction(numerator / i, denominator / i);
+                }
+            }
+            throw new Exception();
+        } catch (Exception e) {
+            return new Fraction(numerator, denominator);
+        }
+
     }
 
     /**
