@@ -53,38 +53,22 @@ public class Fraction implements IFraction {
 
     @Override
     public IFraction plus(IFraction other) {
-        int b = getDenominator();
-        int a = getNumerator();
-        int c = other.getNumerator();
-        int d = other.getDenominator();
-        return new Fraction((a * d) + (b * c), b * d);
+        return new Fraction((getNumerator() * other.getDenominator()) + (getDenominator() * other.getNumerator()), getDenominator() * other.getDenominator());
     }
 
     @Override
     public IFraction minus(IFraction other) {
-        int b = getDenominator();
-        int a = getNumerator();
-        int c = other.getNumerator();
-        int d = other.getDenominator();
-        return new Fraction((a * d) - (b * c), b * d);
+        return new Fraction((getNumerator() * other.getDenominator()) - (getDenominator() * other.getNumerator()), getDenominator() * other.getDenominator());
     }
 
     @Override
     public IFraction times(IFraction other) {
-        int b = getDenominator();
-        int a = getNumerator();
-        int c = other.getNumerator();
-        int d = other.getDenominator();
-        return new Fraction(a * c, b * d);
+        return new Fraction(getNumerator() * other.getNumerator(), getDenominator() * other.getDenominator());
     }
 
     @Override
     public IFraction dividedBy(IFraction other) {
-        int b = getDenominator();
-        int a = getNumerator();
-        int c = other.getNumerator();
-        int d = other.getDenominator();
-        return new Fraction(a * d, b * c);
+        return new Fraction(getNumerator() * other.getDenominator(), getDenominator() * other.getNumerator());
     }
 
     @Override
